@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container main-container">
+        <h1 class="display-4">Scan Results for {{ url }}</h1>
+        <div class="mt-4">
+            {% if vulnerabilities %}
+                <div class="alert alert-danger">
+                    <span class="indicator"></span> Available Threats Detected
+                </div>
+                <ul class="list-group mt-2">
+                    {% for vuln in vulnerabilities %}
+                        <li class="list-group-item">{{ vuln }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="alert alert-info mt-4">
+                    <h2>How to Fix the Threats</h2>
+                    <ul>
+                        <li><strong>Content-Security-Policy:</strong> Add a Content-Security-Policy header to your HTTP response to control resources the user agent is allowed to load.</li>
+                        <li><strong>X-Frame-Options:</strong> Add an X-Frame-Options header to prevent clickjacking attacks by ensuring your content is not embedded into other sites.</li>
+                        <li><strong>X-XSS-Protection:</strong> Add an X-XSS-Protection header to enable the cross-site scripting (XSS) filter built into most browsers.</li>
+                        <li><strong>Strict-Transport-Security:</strong> Add a Strict-Transport-Security header to enforce secure (HTTP over SSL/TLS) connections to the server.</li>
+                    </ul>
+                </div>
+            {% else %}
+                <div class="alert alert-success">
+                    <span class="indicator"></span> No vulnerabilities detected.
+                </div>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg btn-block mt-4">Back to Scanner</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

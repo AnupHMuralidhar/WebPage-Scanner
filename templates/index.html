@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Vulnerability Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container main-container">
+        <div class="header">
+            <h1 class="display-4">Vulnerability Scanner</h1>
+            <p class="lead">Identify and analyze potential vulnerabilities in your web applications.</p>
+        </div>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="url">Enter URL to Scan:</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Start Scan</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
